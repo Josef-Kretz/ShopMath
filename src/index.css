@@ -67,20 +67,23 @@ table {
 	width: 100px;
 }
 
-input.wholeNumber{
-	grid-area: 1/1/3/2;
-	margin: auto;
-	height: 75px;
-}
+
 
 input[type=text], input[inputMode=numeric]{
 	width: 75px;
 	height: 50px;
 	background: rgba(255, 255, 255, 0.3);
 	border: none;
-	font-size: 50px;
+	font-size: 35px;
 	text-align: center;
 	color: black;
+}
+
+input.wholeNumber{
+	grid-area: 1/1/3/2;
+	margin: auto;
+	height: 75px;
+	font-size: 50px;
 }
 
 input.denominator{
@@ -89,6 +92,7 @@ input.denominator{
 
 #fraction-con{
 	display:flex;
+	justify-content: center;
 }
 
 #fraction-con > section {
@@ -105,5 +109,5 @@ input.denominator{
 }
 
 body{
-	background:blue;
+	background: aqua;
 }
