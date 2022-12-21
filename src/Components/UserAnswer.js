@@ -13,7 +13,7 @@ const UserAnswer = ({ userAnswer, answer, setAnswer }) => {
             <input 
                 inputMode='numeric'
                 min='0'
-                name='wholeNumber'
+                className='wholeNumber'
                 id='wholeNumber'
                 value={answer.wholeNumber||''}
                 onChange={ ({target : { value}}) => isNaN(+value)||setAnswer({...answer, wholeNumber: +value})}
@@ -22,7 +22,7 @@ const UserAnswer = ({ userAnswer, answer, setAnswer }) => {
             <input 
                 inputMode='numeric'
                 min='0'
-                name='numerator'
+                className='numerator'
                 id='numerator'
                 value={answer.numerator||''}
                 onChange={ ({target : { value}}) => isNaN(+value)||setAnswer({...answer, numerator: +value})}
@@ -31,7 +31,7 @@ const UserAnswer = ({ userAnswer, answer, setAnswer }) => {
             <input 
                 inputMode='numeric'
                 min='0'
-                name='denominator'
+                className='denominator'
                 id='denominator'
                 value={answer.denominator||''}
                 onChange={ ({target : { value}}) => isNaN(+value)||setAnswer({...answer, denominator: +value})}

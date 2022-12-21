@@ -32,7 +32,7 @@ const ProblemGenerator = ({answer, setAnswer, generatedProblem, setGeneratedProb
     }
 
     return (
-        <form onSubmit={makeMath}>
+        <form id='fraction-con' onSubmit={makeMath}>
             <label htmlFor='difficulty-ddl'>Select difficulty:</label>
             <select defaultValue='16' name='difficulty' id='difficulty-ddl'>
                 <option value='4'>⅟₄</option>

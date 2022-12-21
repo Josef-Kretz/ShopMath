@@ -49,24 +49,61 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-#userAnswer {
-    display: grid;
-    grid-template: 1fr 1fr 1fr / 1fr 1fr;
-    height: 100px;
-    width: 100px;
-}
-#userAnswer input {
-    grid-area: 3/1/4/3;
-    text-align: center;
-}
-input#wholeNumber{
-    grid-area: 1/1/3/2;
-}
-input#numerator{
-    grid-area: 1/2/2/3;
-}
-input#denominator{
-    grid-area: 2/2/3/3;
+/* styling */
+#operation{
+	width: 50px;
+	height: 50px;
+	font-size: 50px;
+	border: none;
+	background: none;
+	text-align: center;
 }
 
+#fraction1, #fraction2, #userAnswer{
+	display:grid;
+	grid-template: 1fr 1fr/1fr 1fr;
+	column-gap: 10px;
+	height: 100px;
+	width: 100px;
+}
+
+input.wholeNumber{
+	grid-area: 1/1/3/2;
+	margin: auto;
+	height: 75px;
+}
+
+input[type=text], input[inputMode=numeric]{
+	width: 75px;
+	height: 50px;
+	background: rgba(255, 255, 255, 0.3);
+	border: none;
+	font-size: 50px;
+	text-align: center;
+	color: black;
+}
+
+input.denominator{
+	border-top: 2px solid black;
+}
+
+#fraction-con{
+	display:flex;
+}
+
+#fraction-con > section {
+	width: auto;
+}
+
+#fraction-con > input {
+	height: min-content;
+}
+
+#fraction-con > select {
+	height: min-content;
+	font-size: 18px;
+}
+
+body{
+	background:blue;
+}
