@@ -59,31 +59,42 @@ table {
 	text-align: center;
 }
 
+/* adjusts fraction subsections */
 #fraction1, #fraction2, #userAnswer{
 	display:grid;
 	grid-template: 1fr 1fr/1fr 1fr;
-	column-gap: 10px;
 	height: 100px;
 	width: 100px;
+	margin: 0 auto;
 }
 
+#userAnswer{
+	margin: 100px auto;
+}
 
+#answerButton{
+	grid-area: 3/1/4/3;
+}
 
 input[type=text], input[inputMode=numeric]{
-	width: 75px;
-	height: 50px;
+	width: 50px;
+	height: 30px;
 	background: rgba(255, 255, 255, 0.3);
 	border: none;
-	font-size: 35px;
+	font-size: 25px;
 	text-align: center;
 	color: black;
 }
 
 input.wholeNumber{
 	grid-area: 1/1/3/2;
-	margin: auto;
-	height: 75px;
-	font-size: 50px;
+	height: 50px;
+	font-size: 40px;
+	margin: auto 0 auto auto;
+}
+
+input.numerator{
+	margin: auto 0 0 0;
 }
 
 input.denominator{
@@ -91,23 +102,50 @@ input.denominator{
 }
 
 #fraction-con{
-	display:flex;
-	justify-content: center;
+	display: grid;
+	grid-template: 1fr 30px 35px/1fr 150px 50px 150px 1fr;
+	row-gap: 5px;
 }
 
-#fraction-con > section {
-	width: auto;
+#fraction1 {
+	grid-area: 1/2/2/3;
 }
 
-#fraction-con > input {
-	height: min-content;
+#op-con {
+	grid-area: 1/3/2/4;
+	margin: auto;
 }
 
-#fraction-con > select {
-	height: min-content;
-	font-size: 18px;
+#fraction2 {
+	grid-area: 1/4/2/5;
+}
+
+#genProb {
+	grid-area: 2/4/3/5;
+}
+
+#cheat{
+	grid-area: 2/2/3/3;
+}
+
+#difficulty-con {
+	grid-area: 3/3/4/4;
+}
+
+#difficulty-ddl{
+	font-size: 20px;
 }
 
 body{
 	background: aqua;
+}
+
+/* styling classes for correct/incorrect submissions */
+
+.correct{
+	border: 2px solid green;
+}
+
+.wrong{
+	border: 2px solid red;
 }

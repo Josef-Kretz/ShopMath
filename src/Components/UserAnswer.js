@@ -37,7 +37,7 @@ const UserAnswer = ({ userAnswer, answer, setAnswer }) => {
                 onChange={ ({target : { value}}) => isNaN(+value)||setAnswer({...answer, denominator: +value})}
                 autoComplete='off'
             />
-            <input type='submit' value='Give Answer' />
+            <input type='submit' id='answerButton' value='Give Answer' />
         </form>
     )
 }

@@ -1,29 +1,38 @@
+import { useEffect } from 'react'
 import NumberObject from './NumberObject'
 
-const ProblemGenerator = ({answer, setAnswer, generatedProblem, setGeneratedProblem, setUserInput}) => {
+const ProblemGenerator = ({answer, setAnswer, generatedProblem, setGeneratedProblem, setUserInput, clearChanges}) => {
     let {fraction1, fraction2} = generatedProblem
 
-    const makeMath = (e) => {
-        e.preventDefault()
+    useEffect(() => {
+        makeMath()
+    }, [])
 
-        setUserInput(new NumberObject())
-
-        let diff = +e.target.elements.difficulty.value //gets user selected value 4,8,16, or 32
-
+    const makeMath = (diff=16) => {
         //generates 2 random numbers for fraction based math
         let num1 = Math.floor(Math.random()*24) + (Math.floor(Math.random()*diff))/diff
         let num2 = Math.floor(Math.random()*24) + (Math.floor(Math.random()*diff))/diff
 
         if(num1 > num2){
             setAnswer(new NumberObject(num1-num2))
-            e.target.elements.operation.value = '-'
+            document.getElementById('operation').value = '-'
         }
         else{
             setAnswer( new NumberObject(num1+num2))
-            e.target.elements.operation.value = '+'
+            document.getElementById('operation').value = '+'
         }
 
         setGeneratedProblem({fraction1: new NumberObject(num1), fraction2: new NumberObject(num2)})
+    }
+
+    const formMath = (e) => {
+        e.preventDefault()
+        setUserInput(new NumberObject())
+        clearChanges()
+
+        let diff = +e.target.elements.difficulty.value //gets user selected value 4,8,16, or 32
+
+        makeMath(diff)
 
     }
 
@@ -32,14 +41,16 @@ const ProblemGenerator = ({answer, setAnswer, generatedProblem, setGeneratedProb
     }
 
     return (
-        <form id='fraction-con' onSubmit={makeMath}>
-            <label htmlFor='difficulty-ddl'>Select difficulty:</label>
-            <select defaultValue='16' name='difficulty' id='difficulty-ddl'>
-                <option value='4'>⅟₄</option>
-                <option value='8'>⅟₈</option>
-                <option value='16'>⅟₁₆</option>
-                <option value='32'>⅟₃₂</option>
-            </select>
+        <form id='fraction-con' onSubmit={formMath}>
+            <section id='difficulty-con'>
+                <label htmlFor='difficulty-ddl'>Difficulty:</label>
+                <select defaultValue='16' name='difficulty' id='difficulty-ddl'>
+                    <option value='4'>⅟₄</option>
+                    <option value='8'>⅟₈</option>
+                    <option value='16'>⅟₁₆</option>
+                    <option value='32'>⅟₃₂</option>
+                </select>
+            </section>
             <section id='fraction1'>
                 <input type='text' className='wholeNumber' value={fraction1.wholeNumber||''} disabled />
                 <input type='text' className='numerator' value={fraction1.numerator||''} disabled />
@@ -53,8 +64,8 @@ const ProblemGenerator = ({answer, setAnswer, generatedProblem, setGeneratedProb
                 <input type='text' className='numerator' value={fraction2.numerator||''} disabled />
                 <input type='text' className='denominator' value={fraction2.denominator||''} disabled />
             </section>
-        <input type='submit' value='Generate Problem' />
-        <input type='button' onClick={showAnswer} value='Show Answer' />
+        <input type='submit' id='genProb' value='New Problem' />
+        <input type='button' id='cheat' onClick={showAnswer} value='Show Answer' />
         </form>
     )
 }
