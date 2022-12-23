@@ -24,8 +24,6 @@ function App()
 
         if(checkMath) answerBox.add('correct')
         else answerBox.add('wrong')
-
-        console.log()
     }
 
     const clearChanges = () => {

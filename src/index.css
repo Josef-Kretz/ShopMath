@@ -118,6 +118,7 @@ input.denominator{
 	display: grid;
 	grid-template: 1fr 30px 35px/1fr 150px 50px 150px 1fr;
 	row-gap: 5px;
+	margin-top:10%;
 }
 
 #fraction1 {
