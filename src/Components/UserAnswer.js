@@ -18,6 +18,7 @@ const UserAnswer = ({ userAnswer, answer, setAnswer }) => {
                 value={answer.wholeNumber||''}
                 onChange={ ({target : { value}}) => isNaN(+value)||setAnswer({...answer, wholeNumber: +value})}
                 autoComplete='off'
+                autoFocus
             />
             <input 
                 inputMode='numeric'

@@ -15,7 +15,7 @@ const ProblemGenerator = ({answer, setAnswer, generatedProblem, setGeneratedProb
 
         if(num1 > num2){
             setAnswer(new NumberObject(num1-num2))
-            document.getElementById('operation').value = '-'
+            document.getElementById('operation').value = '‒'
         }
         else{
             setAnswer( new NumberObject(num1+num2))
@@ -33,6 +33,7 @@ const ProblemGenerator = ({answer, setAnswer, generatedProblem, setGeneratedProb
         let diff = +e.target.elements.difficulty.value //gets user selected value 4,8,16, or 32
 
         makeMath(diff)
+        document.getElementById('wholeNumber').focus()
 
     }
 
