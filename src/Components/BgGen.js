@@ -12,8 +12,7 @@ const BgGen = (limit, parent) => {
     ];
     const height = window.innerHeight
     const width = window.innerWidth
-    
-    
+
     for (let i = 0; i < limit; i++) {
       //box dimensions and placement
       const boxHeight = Math.floor(0.1*height)+Math.floor(Math.random() * (height/limit))

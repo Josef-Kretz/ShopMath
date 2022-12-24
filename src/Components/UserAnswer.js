@@ -7,7 +7,7 @@ const UserAnswer = ({ userAnswer, answer, setAnswer, checkAnswer, clearChanges }
 
         if(checkAnswer === 'correct') {
             clearChanges()
-            document.getElementById('fraction-con').requestSubmit()
+            document.getElementById('fraction-con').requestSubmit() //generates a new problem
         }
         else userAnswer()
     }

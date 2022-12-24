@@ -16,7 +16,6 @@ function App()
         BgGen(100 , document.getElementById('bg'))
         document.getElementById('wholeNumber').focus({preventScroll: true})
     }, [])
-    
 
     const userAnswer = () => {
         const checkMath = userInput.wholeNumber === answer.wholeNumber && userInput.numerator === answer.numerator && userInput.denominator === answer.denominator
@@ -33,10 +32,10 @@ function App()
     }
 
     return (
-        <div id='test'>
+        <>
             <ProblemGenerator  answer={answer} setAnswer={setAnswer} generatedProblem={generatedProblem} setGeneratedProblem={setGeneratedProblem} setUserInput={setUserInput} clearChanges={clearChanges} />
             <UserAnswer userAnswer={userAnswer} answer={userInput} setAnswer={setUserInput} checkAnswer={checkAnswer} clearChanges={clearChanges} />
-        </div>
+        </>
     )
 }
 

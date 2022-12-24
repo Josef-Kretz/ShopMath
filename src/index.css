@@ -71,10 +71,9 @@ table {
 }
 
 #userAnswer{
-	margin: 100px auto;
+	margin: 100px auto 0 auto;
 	height: 150px;
 	width: 200px;
-	
 }
 
 #answerButton{
@@ -119,9 +118,9 @@ input.denominator{
 
 #fraction-con{
 	display: grid;
-	grid-template: 1fr 30px 35px/1fr 150px 50px 150px 1fr;
+	grid-template: 1fr 30px 45px/1fr 150px 50px 150px 1fr;
 	row-gap: 5px;
-	margin-top:10%;
+	margin-top:30px;
 }
 
 #fraction1 {
