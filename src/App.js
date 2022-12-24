@@ -10,33 +10,32 @@ function App()
     const [userInput, setUserInput] = useState(new NumberObject())
     const [generatedProblem, setGeneratedProblem] = useState({fraction1: new NumberObject(), fraction2: new NumberObject()})
     const [answer, setAnswer] = useState(new NumberObject())
+    const [checkAnswer, setCheckAnswer] = useState('')
 
     useEffect( () => {
         BgGen(100 , document.getElementById('bg'))
+        document.getElementById('wholeNumber').focus({preventScroll: true})
     }, [])
     
 
     const userAnswer = () => {
         const checkMath = userInput.wholeNumber === answer.wholeNumber && userInput.numerator === answer.numerator && userInput.denominator === answer.denominator
 
-        let answerBox = document.getElementById('userAnswer').classList
         clearChanges()
 
-        if(checkMath) answerBox.add('correct')
-        else answerBox.add('wrong')
+        if(checkMath) setCheckAnswer('correct')
+        else setCheckAnswer('wrong')
     }
 
     const clearChanges = () => {
         //remove all indications of success or failure
-        let answerBox = document.getElementById('userAnswer').classList
-
-        answerBox.remove('correct','wrong')
+        setCheckAnswer('')
     }
 
     return (
         <div id='test'>
             <ProblemGenerator  answer={answer} setAnswer={setAnswer} generatedProblem={generatedProblem} setGeneratedProblem={setGeneratedProblem} setUserInput={setUserInput} clearChanges={clearChanges} />
-            <UserAnswer userAnswer={userAnswer} answer={userInput} setAnswer={setUserInput} />
+            <UserAnswer userAnswer={userAnswer} answer={userInput} setAnswer={setUserInput} checkAnswer={checkAnswer} clearChanges={clearChanges} />
         </div>
     )
 }

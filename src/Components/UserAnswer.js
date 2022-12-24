@@ -1,15 +1,19 @@
-const UserAnswer = ({ userAnswer, answer, setAnswer }) => {
+const UserAnswer = ({ userAnswer, answer, setAnswer, checkAnswer, clearChanges }) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
 
         if(answer.numerator > answer.denominator) return
 
-        userAnswer()
+        if(checkAnswer === 'correct') {
+            clearChanges()
+            document.getElementById('fraction-con').requestSubmit()
+        }
+        else userAnswer()
     }
 
     return ( //returns the form so user can give an answer
-        <form onSubmit={onSubmit} id='userAnswer'>
+        <form onSubmit={onSubmit} id='userAnswer' className={checkAnswer}>
             <input 
                 inputMode='numeric'
                 min='0'
@@ -18,7 +22,6 @@ const UserAnswer = ({ userAnswer, answer, setAnswer }) => {
                 value={answer.wholeNumber||''}
                 onChange={ ({target : { value}}) => isNaN(+value)||setAnswer({...answer, wholeNumber: +value})}
                 autoComplete='off'
-                autoFocus
             />
             <input 
                 inputMode='numeric'
