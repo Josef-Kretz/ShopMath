@@ -33,7 +33,6 @@ const ProblemGenerator = ({answer, setAnswer, generatedProblem, setGeneratedProb
         let diff = +e.target.elements.difficulty.value //gets user selected value 4,8,16, or 32
 
         makeMath(diff)
-        document.getElementById('wholeNumber').focus({preventScroll: true})
 
     }
 
