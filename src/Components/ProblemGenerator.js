@@ -6,7 +6,6 @@ const ProblemGenerator = ({answer, setAnswer, generatedProblem, setGeneratedProb
 
     useEffect(() => {
         makeMath()
-        document.getElementById('wholeNumber').focus({preventScroll: true})
     }, [])
 
     const makeMath = (diff=16) => {
