@@ -1,8 +1,7 @@
 import { useWindowDimension } from "./WindowDimenion";
-import React from 'react'
+import React, {useEffect} from 'react'
 
-const BgGen = ({limit=100}) => {
-    // override colors here
+const BgGen = ({limit=100, boxes, setBoxes}) => {
     const colors = [
       "#577590",
       "#43aa8b",
@@ -12,28 +11,34 @@ const BgGen = ({limit=100}) => {
       "#f3722c",
       "#f94144"
     ];
+    
     const [width, height] = useWindowDimension()
-    let boxes = []
 
-    for(let i = 0;i < limit; ++i)
-    {
-        const boxHeight = Math.floor(0.1*height)+Math.floor(Math.random() * (height/limit))
-        const boxWidth = Math.floor(0.1*width)+Math.floor(Math.random() * (width/limit))
-        const boxColor = colors[Math.floor(Math.random() * colors.length)]
+    useEffect( () => {
+        let tempBoxes = []
+        for(let i = 0;i < limit; ++i)
+        {
+            const boxHeight = Math.floor(0.1*height)+Math.floor(Math.random() * (height/limit))
+            const boxWidth = Math.floor(0.1*width)+Math.floor(Math.random() * (width/limit))
+            const boxColor = colors[Math.floor(Math.random() * colors.length)]
 
-        let boxStyle = {
-            height: `${boxHeight}px`,
-            width: `${boxWidth}px`,
-            top: `${Math.floor(Math.random() * (height-boxHeight))}px`,
-            left: `${Math.floor(Math.random() * (width-boxWidth))}px`,
-            backgroundColor: boxColor
+            let boxStyle = {
+                height: `${boxHeight}px`,
+                width: `${boxWidth}px`,
+                top: `${Math.floor(Math.random() * (height-boxHeight))}px`,
+                left: `${Math.floor(Math.random() * (width-boxWidth))}px`,
+                backgroundColor: boxColor
+            }
+
+            tempBoxes.push(React.createElement('div',{
+                className: 'box',
+                style: boxStyle
+            }))
         }
+        setBoxes(tempBoxes.slice())
+    }, [width, height])
 
-        boxes.push(React.createElement('div',{
-            className: 'box',
-            style: boxStyle
-        }))
-    }
+    
 
     return React.createElement('div', {id:'bg'}, ...boxes)
   };
